@@ -7,23 +7,44 @@ Created on Mon May 18 13:52:27 2020
 import socketserver
 
 class MyUDPHandler(socketserver.BaseRequestHandler):
-    """
-    This class works similar to the TCP handler class, except that
-    self.request consists of a pair of data and client socket, and since
-    there is no connection the client address must be given explicitly
-    when sending data back via sendto().
-    """
-
     def handle(self):
-        data = self.request[0].strip()
+        data = self.request[0].strip().decode(encoding="utf-8")
         socket = self.request[1]
         print("{} wrote:".format(self.client_address[0]))
-        print("data",data)
-        socket.sendto(data.upper(), self.client_address)
+        print(data)
+        raw= data.split('|');
+        if (len(raw)==1):
+            response=findCustomer(raw[0]).encode()
+        socket.sendto(response, self.client_address)
 
-print("Initializing server...")
-if __name__ == "__main__":
-    HOST, PORT = "localhost", 9999
-    with socketserver.UDPServer((HOST, PORT), MyUDPHandler) as server:
-        server.serve_forever()
+def startServer():
+    print("Starting server...")
+    loadData()
+    if __name__ == "__main__":
+        HOST, PORT = "localhost", 9999
+        with socketserver.UDPServer((HOST, PORT), MyUDPHandler) as server:
+            server.serve_forever()
+data={}
+def loadData():
+    file1 = open("data.txt","r+")  
+    for line in file1.readlines() :
+        raw= line.split('|');
+        data[raw[0]]={'age':raw[1],'address':raw[2],'phone':raw[3]}
+        
+def findCustomer(name):
+    if (name not in data):
+        return("customer not found")
+    record=data[name]
+    print("oooooooooooooooo.",record)
+    res=""
+    res+=name+","
+    for k,v in record.items():
+        res+=v+","
+    return(res)
 
+#def AddCustomer():         
+        
+    
+startServer()
+loadData()
+findCustomer()

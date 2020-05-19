@@ -1,0 +1,5 @@
+greeshma|24|2312 mainstreet|5148795246
+ajay|23|435 queenmary street|6471256555
+nimisha|18|padamugal|546565455
+mary|65|213 main road kochi|5148785423
+john|34|8643 apple street|5148526645
