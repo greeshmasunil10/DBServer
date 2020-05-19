@@ -13,10 +13,24 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 def request(data):
     sock.sendto(bytes(data + "\n", "utf-8"), (HOST, PORT))
     received = str(sock.recv(1024), "utf-8")
-    print("Sent:     {}".format(data))
-    print("Received: {}".format(received)) 
+#    print("Sent:     {}".format(data))
+#    print("Received: {}".format(received)) 
     if(choice =="1"):
         printRecord(received)
+    if(choice =="2"):
+        print(received)
+    if(choice =="3"):
+        print(received)
+    if(choice =="4"):
+        print(received)
+    if(choice =="5"):
+        print(received)
+    if(choice =="6"):
+        print(received)
+    if(choice =="7"):
+        print(received)
+    if(choice =="8"):
+        print(received)
         
 
 def printRecord(received):
@@ -49,13 +63,20 @@ while(1):
         request("add,"+name+","+age+","+add+","+ph+",")
     if(choice=="3"):
         name=input("Enter name:")
+        request("delete,"+name)
     if(choice=="4"):
         name=input("Enter name:")
+        age=input("Enter age:")
+        request("updateage,"+name+","+age+",")
     if(choice=="5"):
         name=input("Enter name:")
+        add=input("Enter address:")
+        request("updateaddress,"+name+","+add+",")
     if(choice=="6"):
         name=input("Enter name:")
+        ph=input("Enter phone:")
+        request("updatephone,"+name+","+ph+",")
     if(choice=="7"):
-        name=input("Enter name:")    
+        request("print"+",")    
     if(choice=="8"):
         break  

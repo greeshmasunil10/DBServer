@@ -1,8 +1,7 @@
-greeshma|24|2312 mainstreet|5148795246
 ajay|23|435 queenmary street|6471256555
 nimisha|18|padamugal|546565455
 mary|65|213 main road kochi|5148785423
 john|34|8643 apple street|5148526645
-bobo|12|435 mason road|4517896254
 molu|11|doll moon|45678997889
-preetha|45|kaloor|9878998754
+preetha|45|kaloor|987899875
+xavier|65|asdas|6564655
