@@ -27,30 +27,35 @@ def printRecord(received):
     print("Age:",raw[1])
     print("Address:",raw[2])
     print("Phone:",raw[3])
-    
-choice=input("""Python DB Menu
-1. Find customer
-2. Add customer
-3. Delete customer
-4. Update customer age
-5. Update customer address
-6. Update customer phone
-7. Print report
-8. Exit
-Select:""")
-if(choice=="1"):
-    name=input("Enter name:")
-    request(name)
-if(choice==2):
-    name=input("Enter name:")
-if(choice==3):
-    name=input("Enter name:")
-if(choice==4):
-    name=input("Enter name:")
-if(choice==5):
-    name=input("Enter name:")
-if(choice==6):
-    name=input("Enter name:")
-if(choice==7):
-    name=input("Enter name:")    
-print("end")
+while(1):    
+    choice=input("""Python DB Menu
+    1. Find customer
+    2. Add customer
+    3. Delete customer
+    4. Update customer age
+    5. Update customer address
+    6. Update customer phone
+    7. Print report
+    8. Exit
+    Select:""")
+    if(choice=="1"):
+        name=input("Enter name:")
+        request("find,"+name)
+    if(choice=="2"):
+        name=input("Enter name:")
+        age=input("Enter age:")
+        add=input("Enter address:")
+        ph=input("Enter phone:")
+        request("add,"+name+","+age+","+add+","+ph+",")
+    if(choice=="3"):
+        name=input("Enter name:")
+    if(choice=="4"):
+        name=input("Enter name:")
+    if(choice=="5"):
+        name=input("Enter name:")
+    if(choice=="6"):
+        name=input("Enter name:")
+    if(choice=="7"):
+        name=input("Enter name:")    
+    if(choice=="8"):
+        break  

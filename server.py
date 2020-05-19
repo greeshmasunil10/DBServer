@@ -12,9 +12,11 @@ class MyUDPHandler(socketserver.BaseRequestHandler):
         socket = self.request[1]
         print("{} wrote:".format(self.client_address[0]))
         print(data)
-        raw= data.split('|');
-        if (len(raw)==1):
-            response=findCustomer(raw[0]).encode()
+        raw= data.split(',');
+        if (raw[0]=="find"):
+            response=findCustomer(raw[1]).encode()
+        if (raw[0]=="add"):
+            response=addCustomer(data).encode()
         socket.sendto(response, self.client_address)
 
 def startServer():
@@ -30,21 +32,31 @@ def loadData():
     for line in file1.readlines() :
         raw= line.split('|');
         data[raw[0]]={'age':raw[1],'address':raw[2],'phone':raw[3]}
+    file1.close()   
         
 def findCustomer(name):
     if (name not in data):
         return("customer not found")
     record=data[name]
-    print("oooooooooooooooo.",record)
     res=""
     res+=name+","
     for k,v in record.items():
         res+=v+","
+    print("response:",res)
     return(res)
 
-#def AddCustomer():         
-        
+def addCustomer(line):  
+    raw= line.split(',');
+    name= raw[1]
+    print(name)
+    if (name in data):
+        print(("customer already exists") )
+        return("customer already exists")      
+    f1=open('data.txt', 'a')
+    f1.write("\n"+name+"|" +raw[2]+"|"+raw[3]+"|"+raw[4])
+    f1.close()
+    loadData()
+    return("Customer "+name+" has been added")
     
 startServer()
 loadData()
-findCustomer()
