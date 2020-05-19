@@ -79,4 +79,5 @@ while(1):
     if(choice=="7"):
         request("print"+",")    
     if(choice=="8"):
+        print("Good bye!")
         break  
