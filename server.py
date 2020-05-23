@@ -47,7 +47,7 @@ def loadData():
     
 def findCustomer(name):
     if (name not in data):
-        return("customer not found")
+        return("Customer not found!")
     record=data[name]
     res=""
     res+=name+","
@@ -87,7 +87,7 @@ def updateValue(func,name,value):
 def printReport():
     res=""
     for i in sorted (data) :
-        res+=i+","
+        res+="\nName:"+i+","
         for k1, v1 in data[i].items():
             res+=k1+":"+v1+","
     print(res)

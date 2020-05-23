@@ -15,6 +15,7 @@ def request(data):
     received = str(sock.recv(1024), "utf-8")
 #    print("Sent:     {}".format(data))
 #    print("Received: {}".format(received)) 
+    print("\n Response form Server:")
     if(choice =="1"):
         printRecord(received)
     if(choice =="2"):
@@ -32,10 +33,27 @@ def request(data):
     if(choice =="8"):
         print(received)
         
-
+def entername():
+    while True:
+        name=input("Enter name:")
+        if(name!=""):
+            break
+        else:
+            print("Please enter again!")
+    return name   
+def enterage():
+    while True:
+        age=input("Enter age:")
+        try:
+            int(age)
+            break
+        except ValueError:
+                print("Please enter a number!")
+    return age  
 def printRecord(received):
-    if(received=="customer not found"):
-        return
+    if(received=="Customer not found!"):
+        print(received)
+        return(0)
     raw= received.split(',');
     print("Name:",raw[0])
     print("Age:",raw[1])
@@ -53,31 +71,37 @@ while(1):
     8. Exit
     Select:""")
     if(choice=="1"):
-        name=input("Enter name:")
+        name=entername()
         request("find,"+name)
     if(choice=="2"):
-        name=input("Enter name:")
-        age=input("Enter age:")
+        name= entername()
+        age=enterage()
         add=input("Enter address:")
         ph=input("Enter phone:")
+        if(ph==""):
+            ph="\n"
         request("add,"+name+","+age+","+add+","+ph+",")
     if(choice=="3"):
-        name=input("Enter name:")
+        name=entername()
         request("delete,"+name)
     if(choice=="4"):
-        name=input("Enter name:")
-        age=input("Enter age:")
+        name=entername()
+        age=enterage()
         request("updateage,"+name+","+age+",")
     if(choice=="5"):
-        name=input("Enter name:")
+        name=entername()
         add=input("Enter address:")
         request("updateaddress,"+name+","+add+",")
     if(choice=="6"):
-        name=input("Enter name:")
+        name=entername()
         ph=input("Enter phone:")
+        if(ph==""):
+            ph="\n"
         request("updatephone,"+name+","+ph+",")
     if(choice=="7"):
         request("print"+",")    
     if(choice=="8"):
         print("Good bye!")
         break  
+
+     
