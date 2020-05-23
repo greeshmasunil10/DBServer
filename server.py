@@ -85,12 +85,11 @@ def updateValue(func,name,value):
     return(func+" "+value+" has been updated")
 
 def printReport():
-    temp= sorted (data)
     res=""
-    for k,v in data.items():
-        res+=k+","
-        for k1, v1 in v.items():
-            res+=k1+","+v1+","
+    for i in sorted (data) :
+        res+=i+","
+        for k1, v1 in data[i].items():
+            res+=k1+":"+v1+","
     print(res)
     return res
     
