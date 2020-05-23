@@ -15,7 +15,7 @@ def request(data):
     received = str(sock.recv(1024), "utf-8")
 #    print("Sent:     {}".format(data))
 #    print("Received: {}".format(received)) 
-    print("\n Response form Server:")
+    print("\n ***Response form Server:")
     if(choice =="1"):
         printRecord(received)
     if(choice =="2"):
@@ -32,6 +32,7 @@ def request(data):
         print(received)
     if(choice =="8"):
         print(received)
+    print("***")
         
 def entername():
     while True:
@@ -50,6 +51,19 @@ def enterage():
         except ValueError:
                 print("Please enter a number!")
     return age  
+
+def enterphone():
+    while True:
+        ph=input("Enter phone:")
+        if(ph==""):
+                print("true")
+                return ph
+        try:
+            int(ph)
+            break
+        except ValueError:
+                print("Please enter a number!")
+    return ph  
 def printRecord(received):
     if(received=="Customer not found!"):
         print(received)
@@ -77,7 +91,7 @@ while(1):
         name= entername()
         age=enterage()
         add=input("Enter address:")
-        ph=input("Enter phone:")
+        ph=enterphone()
         if(ph==""):
             ph="\n"
         request("add,"+name+","+age+","+add+","+ph+",")
@@ -94,7 +108,7 @@ while(1):
         request("updateaddress,"+name+","+add+",")
     if(choice=="6"):
         name=entername()
-        ph=input("Enter phone:")
+        ph=enterphone()
         if(ph==""):
             ph="\n"
         request("updatephone,"+name+","+ph+",")

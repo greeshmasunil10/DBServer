@@ -10,7 +10,7 @@ class MyUDPHandler(socketserver.BaseRequestHandler):
     def handle(self):
         request = self.request[0].strip().decode(encoding="utf-8")
         socket = self.request[1]
-        print("{} wrote:".format(self.client_address[0]))
+        print("\n{} Client Request:".format(self.client_address[0]))
         print(request)
         raw= request.split(',');
         if (raw[0]=="find"):
@@ -53,27 +53,30 @@ def findCustomer(name):
     res+=name+","
     for k,v in record.items():
         res+=v+","
-    print("response:",res)
+    print(res)
     return(res)
 
 def addCustomer(line):  
     raw= line.split(',');
     name= raw[1]
-    print(name)
     if (name in data):
         print(("customer already exists") )
         return("customer already exists")      
     data[name]={'age':raw[2],'address':raw[3],'phone':raw[4]}
+    print("Customer "+name+" has been added")
     return("Customer "+name+" has been added")
 
 def deleteCustomer(name):
     if (name not in data):
+        print("customer not found")
         return("customer not found")
     del data[name]
+    print("Customer "+name+" has been deleted")
     return("Customer "+name+" has been deleted")
 
 def updateValue(func,name,value):
     if (name not in data):
+        print("customer not found")
         return("customer not found")
     record=data[name]
     if(func=="age"):
@@ -82,6 +85,7 @@ def updateValue(func,name,value):
         record['address']=value  
     if(func=="phone"):
         record['phone']=value  
+    print(func+" "+value+" has been updated")
     return(func+" "+value+" has been updated")
 
 def printReport():
@@ -90,7 +94,7 @@ def printReport():
         res+="\nName:"+i+","
         for k1, v1 in data[i].items():
             res+=k1+":"+v1+","
-    print(res)
+    print("Report was sent to client")
     return res
     
     
