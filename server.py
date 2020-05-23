@@ -41,7 +41,7 @@ def startServer():
 def loadData():
     file1 = open("data.txt","r+")  
     for line in file1.readlines() :
-        raw= line.split('|');
+        raw= line.rstrip('\n').split('|');
         data[raw[0]]={'age':raw[1],'address':raw[2],'phone':raw[3]}
     file1.close()   
     

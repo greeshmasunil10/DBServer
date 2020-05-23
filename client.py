@@ -13,8 +13,6 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 def request(data):
     sock.sendto(bytes(data + "\n", "utf-8"), (HOST, PORT))
     received = str(sock.recv(1024), "utf-8")
-#    print("Sent:     {}".format(data))
-#    print("Received: {}".format(received)) 
     print("\n ***Response form Server:")
     if(choice =="1"):
         printRecord(received)
@@ -45,6 +43,8 @@ def entername():
 def enterage():
     while True:
         age=input("Enter age:")
+        if(age==""):
+                return age
         try:
             int(age)
             break
@@ -56,7 +56,6 @@ def enterphone():
     while True:
         ph=input("Enter phone:")
         if(ph==""):
-                print("true")
                 return ph
         try:
             int(ph)
@@ -92,8 +91,6 @@ while(1):
         age=enterage()
         add=input("Enter address:")
         ph=enterphone()
-        if(ph==""):
-            ph="\n"
         request("add,"+name+","+age+","+add+","+ph+",")
     if(choice=="3"):
         name=entername()
@@ -109,8 +106,6 @@ while(1):
     if(choice=="6"):
         name=entername()
         ph=enterphone()
-        if(ph==""):
-            ph="\n"
         request("updatephone,"+name+","+ph+",")
     if(choice=="7"):
         request("print"+",")    
