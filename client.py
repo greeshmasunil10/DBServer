@@ -12,7 +12,7 @@ sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 def request(data):
     sock.sendto(bytes(data + "\n", "utf-8"), (HOST, PORT))
-    received = str(sock.recv(1024), "utf-8")
+    received = str(sock.recv(1000000), "utf-8")
     print("\n ***Response form Server:")
     if(choice =="1"):
         printRecord(received)
@@ -31,7 +31,8 @@ def request(data):
     if(choice =="8"):
         print(received)
     print("***")
-        
+
+    
 def entername():
     while True:
         name=input("Enter name:")

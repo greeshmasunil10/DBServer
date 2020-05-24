@@ -89,12 +89,18 @@ def updateValue(func,name,value):
     return(func+" "+value+" has been updated")
 
 def printReport():
+    dash = '-' * 75
     res=""
+#    for i in sorted (data) :
+#        res+="\nName:"+i+","
+#        for k1, v1 in data[i].items():
+#            res+=k1+":"+v1+","
+    res+='\n'+dash+'\n'+'{:<10s}{:>4s}{:^40}{:>14s}'.format("Name","Age","Address","Phone")+'\n'+dash
     for i in sorted (data) :
-        res+="\nName:"+i+","
-        for k1, v1 in data[i].items():
-            res+=k1+":"+v1+","
+            res+="\n"+'{:<10s}{:>4s}{:^40}{:>14s}'.format(i,data[i]['age'],data[i]['address'],data[i]['phone'])
     print("Report was sent to client")
+    res+='\n'+dash
+#    print(res)
     return res
     
     
