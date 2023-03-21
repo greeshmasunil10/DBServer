@@ -13,10 +13,6 @@ To use DBSystem, simply follow these steps:
 * Start the client by running client.py in another terminal.
 * Follow the prompts to enter and manage customer data.
 
-## Features
-* Efficiently manages customer data through a command-line interface.
-* Securely stores customer information and can handle multiple users.
-
 ## Tools and Technology
 DBSystem was built using Python's built-in socketserver library for socket programming.
 
