@@ -4,15 +4,21 @@
 ![Last Commit](https://img.shields.io/github/last-commit/greeshmasunil10/DBSystem?style=plastic)
 ![Stars](https://img.shields.io/github/stars/greeshmasunil10/DBSystem?style=social)
 
-A small database server in python for mangaing customer data.
+A lightweight database server built in Python for managing customer data.
 
-## Running instructions:-
-* start server.py
-* start client.py
-* follow prompts
+## Getting Started
+To use DBSystem, simply follow these steps:
+
+* Start the server by running server.py in the terminal.
+* Start the client by running client.py in another terminal.
+* Follow the prompts to enter and manage customer data.
+
+## Features
+* Efficiently manages customer data through a command-line interface.
+* Securely stores customer information and can handle multiple users.
 
 ## Tools and Technology
-* [Socket programming](https://docs.python.org/3/library/socketserver.html)
+DBSystem was built using Python's built-in socketserver library for socket programming.
 
 ## Future Scope
 * Adding user authentication to restrict access to authorized personnel only
